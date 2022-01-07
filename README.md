@@ -1,3 +1,14 @@
+**Informations**
+
+```console
+project   : Knn-Classfication for zoo
+creators  : 
+           - ELBOUCHOUKI Ahmed GLSID
+           - HOUD Fatima-Ezzahra II-BDCC
+supervisor: 
+           - QBADOU Mohammed
+```
+
 **To Compile** 
 
 ```console
