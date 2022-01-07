@@ -7,7 +7,7 @@
 
 #define MAXCHAR 1024
 
-int trie_type(type_t *types)
+int get_max(type_t *types)
 {
     int i, max_index = 0;
     for (i = 0; i < types->taille; i++)

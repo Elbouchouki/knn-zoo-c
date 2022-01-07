@@ -19,7 +19,9 @@ typedef struct
 void afficher_types(type_t *);
 
 void reset(type_t *);
-int trie_type(type_t *);
+
+int get_max(type_t *);
+
 type_t read_type_from_csv(char *);
 
 #endif

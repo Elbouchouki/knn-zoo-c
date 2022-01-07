@@ -76,49 +76,35 @@ char *classify(zoo_t *zoo, type_t *types, animal_t animal_x)
 {
     reset(types);
     int k = sqrt(zoo->taille) / 2;
+
     for (int i = 0; i < zoo->taille; i++)
     {
         zoo->animals[i].distance = sqrt(
             (zoo->animals[i].hair - animal_x.hair) * (zoo->animals[i].hair - animal_x.hair) +
-            (zoo->animals[i].feathers - animal_x.feathers) *
-                (zoo->animals[i].feathers - animal_x.feathers) +
-            (zoo->animals[i].eggs - animal_x.eggs) *
-                (zoo->animals[i].eggs - animal_x.eggs) +
-            (zoo->animals[i].milk - animal_x.milk) *
-                (zoo->animals[i].milk - animal_x.milk) +
-            (zoo->animals[i].airborne - animal_x.airborne) *
-                (zoo->animals[i].airborne - animal_x.airborne) +
-            (zoo->animals[i].aquatic - animal_x.aquatic) *
-                (zoo->animals[i].aquatic - animal_x.aquatic) +
-            (zoo->animals[i].predator - animal_x.predator) *
-                (zoo->animals[i].predator - animal_x.predator) +
-            (zoo->animals[i].toothed - animal_x.toothed) *
-                (zoo->animals[i].toothed - animal_x.toothed) +
-            (zoo->animals[i].backbone - animal_x.backbone) *
-                (zoo->animals[i].backbone - animal_x.backbone) +
-            (zoo->animals[i].breathes - animal_x.breathes) *
-                (zoo->animals[i].breathes - animal_x.breathes) +
-            (zoo->animals[i].venomous - animal_x.venomous) *
-                (zoo->animals[i].venomous - animal_x.venomous) +
-            (zoo->animals[i].fins - animal_x.fins) *
-                (zoo->animals[i].fins - animal_x.fins) +
-            (zoo->animals[i].legs - animal_x.legs) *
-                (zoo->animals[i].legs - animal_x.legs) +
-            (zoo->animals[i].tail - animal_x.tail) *
-                (zoo->animals[i].tail - animal_x.tail) +
-            (zoo->animals[i].domestic - animal_x.domestic) *
-                (zoo->animals[i].domestic - animal_x.domestic) +
-            (zoo->animals[i].catsize - animal_x.catsize) *
-                (zoo->animals[i].catsize - animal_x.catsize));
+            (zoo->animals[i].feathers - animal_x.feathers) * (zoo->animals[i].feathers - animal_x.feathers) +
+            (zoo->animals[i].eggs - animal_x.eggs) * (zoo->animals[i].eggs - animal_x.eggs) +
+            (zoo->animals[i].milk - animal_x.milk) * (zoo->animals[i].milk - animal_x.milk) +
+            (zoo->animals[i].airborne - animal_x.airborne) * (zoo->animals[i].airborne - animal_x.airborne) +
+            (zoo->animals[i].aquatic - animal_x.aquatic) * (zoo->animals[i].aquatic - animal_x.aquatic) +
+            (zoo->animals[i].predator - animal_x.predator) * (zoo->animals[i].predator - animal_x.predator) +
+            (zoo->animals[i].toothed - animal_x.toothed) * (zoo->animals[i].toothed - animal_x.toothed) +
+            (zoo->animals[i].backbone - animal_x.backbone) * (zoo->animals[i].backbone - animal_x.backbone) +
+            (zoo->animals[i].breathes - animal_x.breathes) * (zoo->animals[i].breathes - animal_x.breathes) +
+            (zoo->animals[i].venomous - animal_x.venomous) * (zoo->animals[i].venomous - animal_x.venomous) +
+            (zoo->animals[i].fins - animal_x.fins) * (zoo->animals[i].fins - animal_x.fins) +
+            (zoo->animals[i].legs - animal_x.legs) * (zoo->animals[i].legs - animal_x.legs) +
+            (zoo->animals[i].tail - animal_x.tail) * (zoo->animals[i].tail - animal_x.tail) +
+            (zoo->animals[i].domestic - animal_x.domestic) * (zoo->animals[i].domestic - animal_x.domestic) +
+            (zoo->animals[i].catsize - animal_x.catsize) * (zoo->animals[i].catsize - animal_x.catsize));
     }
     trie(zoo);
+    // afficher_types(types);
     for (int i = 0; i < k; i++)
     {
         types->types[zoo->animals[i].type_id - 1].frequence++;
     }
-    // afficher_types(types);
-    int max = trie_type(types);
     // printf("max : %d\n", max);
     // afficher_types(types);
+    int max = get_max(types);
     return types->types[max].name;
 }
